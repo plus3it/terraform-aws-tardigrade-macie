@@ -4,6 +4,7 @@ language: minimal
 
 stages:
   - lint
+  # - test
   - deploy
 
 if: branch = master OR type = pull_request
@@ -21,6 +22,15 @@ jobs:
     - stage: lint
       name: Project Syntax Verification
       script: make docker/run target=lint
+    # moto has not implemented Macie configurations yet, so the CI test fails while running pytest.  The tests pass when run against an actual AWS account.  We need to uncomment the following lines when moto catches up.
+    #- stage: test
+    #  name: Apply Terraform test configs in mockstack
+    #  install:
+    #    - make docker-compose/install
+    #    - make mockstack/up
+    #  script: make mockstack/pytest PYTEST_ARGS="-k 'not create_macie_member and not create_macie_org_admin_account'"
+    #  after_script:
+    #    - make mockstack/clean
     - stage: deploy
       if: branch = master AND type = push AND repo = plus3it/terraform-aws-tardigrade-macie-member
       before_script:
