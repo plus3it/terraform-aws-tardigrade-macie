@@ -7,7 +7,7 @@ module "custom_data_identifier" {
   finding_publishing_frequency = "FIFTEEN_MINUTES"
   status                       = "ENABLED"
 
-  custom_data_identifier = [
+  custom_data_identifiers = [
     {
       name                   = "DataIdentifier1"
       name_prefix            = null

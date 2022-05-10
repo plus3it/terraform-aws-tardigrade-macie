@@ -15,7 +15,7 @@ resource "aws_macie2_account" "this" {
 
 # Creates one or more Macie classification_jobs for this AWS account if the threclassification_job atintelset var is not empty.
 resource "aws_macie2_classification_job" "this" {
-  for_each = { for job in var.classification_job : job.name => job }
+  for_each = { for job in var.classification_jobs : job.name => job }
 
   dynamic "schedule_frequency" {
     for_each = each.value.schedule_frequency != null ? [each.value.schedule_frequency] : []
@@ -137,7 +137,7 @@ resource "aws_macie2_classification_job" "this" {
 
 # Creates one or more Macie custom_data_identifiers for this AWS account if the custom_data_identifier var is not empty.
 resource "aws_macie2_custom_data_identifier" "this" {
-  for_each = { for identifier in var.custom_data_identifier : identifier.name => identifier }
+  for_each = { for identifier in var.custom_data_identifiers : identifier.name => identifier }
 
   regex                  = each.value.regex
   keywords               = each.value.keywords
@@ -153,7 +153,7 @@ resource "aws_macie2_custom_data_identifier" "this" {
 
 # Creates one or more Macie findings_filters for this AWS account if the custom_data_identifier var is not empty.
 resource "aws_macie2_findings_filter" "this" {
-  for_each = { for filter in var.findings_filter : filter.name => filter }
+  for_each = { for filter in var.findings_filters : filter.name => filter }
 
   name        = each.value.name
   name_prefix = each.value.name_prefix

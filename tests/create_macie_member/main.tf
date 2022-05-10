@@ -1,14 +1,14 @@
 # The provider account for the Macie member account
 provider "aws" {
   region  = "us-east-1"
-  profile = "plus3it-member" # Profile must exist in your .aws/config
+  profile = "aws" # Profile must exist in your .aws/config
 }
 
 # AWS provider account for the Macie primary account
 provider "aws" {
   region  = "us-east-1"
   alias   = "administrator"
-  profile = "plus3it-management" # Profile must exist in your .aws/config
+  profile = "awsalternate" # Profile must exist in your .aws/config
 }
 
 # Create Macie account for the administrator AWS account
@@ -35,7 +35,7 @@ module "macie_member" {
   }
 
   member = {
-    email                                 = "aws-accounts+tardigrade-dev-tenant-001@plus3it.com"
+    email                                 = var.member_email
     invite                                = true
     status                                = "ENABLED"
     invitation_message                    = "You are invited to join Macie"
@@ -44,4 +44,10 @@ module "macie_member" {
   }
 
   depends_on = [aws_macie2_account.administrator]
+}
+
+# Use a variable
+variable "member_email" {
+  description = "Email address associated with the member account. Required input for the Guardduty member invitation."
+  type        = string
 }

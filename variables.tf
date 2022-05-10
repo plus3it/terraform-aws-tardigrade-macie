@@ -18,7 +18,7 @@ variable "status" {
   }
 }
 
-variable "classification_job" {
+variable "classification_jobs" {
   description = "Macie classification job"
   type = list(object({
     schedule_frequency = object({ # (Optional) The recurrence pattern for running the job. To run the job only once, set this to null and set the value for the job_type property to ONE_TIME. Only one of the following propperties can be set to a value and the other two must be set to null.
@@ -76,7 +76,7 @@ variable "classification_job" {
   default = []
 }
 
-variable "custom_data_identifier" {
+variable "custom_data_identifiers" {
   description = "AWS Macie Custom Data Identifier."
   type = list(object({
     regex                  = string       # (Optional) The regular expression (regex) that defines the pattern to match. The expression can contain as many as 512 characters.
@@ -91,7 +91,7 @@ variable "custom_data_identifier" {
   default = []
 }
 
-variable "findings_filter" {
+variable "findings_filters" {
   description = " Amazon Macie Findings Filter."
   type = list(object({
     name        = string            # (Optional) A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, Terraform will assign a random, unique name. Conflicts with name_prefix.

@@ -9,7 +9,7 @@ module "macie_standard_resources" {
   finding_publishing_frequency = "FIFTEEN_MINUTES"
   status                       = "ENABLED"
 
-  custom_data_identifier = [
+  custom_data_identifiers = [
     {
       name                   = "DataIdentifier1"
       name_prefix            = null
@@ -38,7 +38,7 @@ module "macie_standard_resources" {
     }
   ]
 
-  findings_filter = [
+  findings_filters = [
     {
       name        = "Filter1"
       name_prefix = null
@@ -115,7 +115,7 @@ module "macie_standard_resources" {
     }
   ]
 
-  classification_job = [
+  classification_jobs = [
     {
       name        = "classificationJob1"
       description = "Classification Job 1"
@@ -258,5 +258,5 @@ resource "aws_s3_bucket" "bucket" {
 
 resource "aws_s3_bucket_acl" "bucket_acl" {
   bucket = aws_s3_bucket.bucket.id
-  acl    = "public-read"
+  acl    = "private"
 }

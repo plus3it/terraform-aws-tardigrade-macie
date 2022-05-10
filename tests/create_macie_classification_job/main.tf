@@ -7,7 +7,7 @@ module "classification_job" {
   finding_publishing_frequency = "FIFTEEN_MINUTES"
   status                       = "ENABLED"
 
-  classification_job = [
+  classification_jobs = [
     {
       name        = "classificationJob1"
       description = "Classification Job 1"
@@ -150,6 +150,6 @@ resource "aws_s3_bucket" "bucket" {
 
 resource "aws_s3_bucket_acl" "bucket_acl" {
   bucket = aws_s3_bucket.bucket.id
-  acl    = "public-read"
+  acl    = "private"
 }
 

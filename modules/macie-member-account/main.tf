@@ -13,14 +13,12 @@ resource "aws_macie2_account" "this" {
 
 # Create Macie member in the administrator account
 resource "aws_macie2_member" "this" {
-  count = var.member == null ? 0 : 1
-
   provider = aws.administrator
 
   account_id                            = data.aws_caller_identity.this.account_id
   email                                 = var.member.email
   status                                = var.member.status
-  invite                                = var.member.invite
+  invite                                = true
   invitation_message                    = var.member.invitation_message
   invitation_disable_email_notification = var.member.invitation_disable_email_notification
   tags                                  = var.member.tags
@@ -28,17 +26,11 @@ resource "aws_macie2_member" "this" {
 
 # Create macie invite accepter in the member account
 resource "aws_macie2_invitation_accepter" "this" {
-  count = var.member == null ? 0 : 1
-
-  administrator_account_id = data.aws_caller_identity.administrator.account_id
+  administrator_account_id = aws_macie2_member.this.administrator_account_id
 
   depends_on = [aws_macie2_member.this]
 }
 
 data "aws_caller_identity" "this" {
   provider = aws
-}
-
-data "aws_caller_identity" "administrator" {
-  provider = aws.administrator
 }

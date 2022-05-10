@@ -1,4 +1,4 @@
-# terraform-aws-tardigrade-guardduty/org_admin_account
+# terraform-aws-tardigrade-macie/member
 
 Terraform module for managing a Macie member_account.
 
@@ -12,20 +12,19 @@ You can find example implementations of this module in the tests folder (create_
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
-| <a name="provider_aws.administrator"></a> [aws.administrator](#provider\_aws.administrator) | >= 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0 |
+| <a name="provider_aws.administrator"></a> [aws.administrator](#provider\_aws.administrator) | >= 3.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_caller_identity.administrator](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_caller_identity.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
@@ -40,8 +39,8 @@ You can find example implementations of this module in the tests folder (create_
 
 | Name | Description |
 |------|-------------|
-| <a name="output_macie_account"></a> [macie\_account](#output\_macie\_account) | Macie account |
-| <a name="output_macie_invite_accepter"></a> [macie\_invite\_accepter](#output\_macie\_invite\_accepter) | Macie aws\_macie\_invite\_accepter |
-| <a name="output_macie_member"></a> [macie\_member](#output\_macie\_member) | Macie member configuration |
+| <a name="output_account"></a> [account](#output\_account) | Macie account |
+| <a name="output_invite_accepter"></a> [invite\_accepter](#output\_invite\_accepter) | Macie aws\_macie\_invite\_accepter |
+| <a name="output_member"></a> [member](#output\_member) | Macie member configuration |
 
 <!-- END TFDOCS -->

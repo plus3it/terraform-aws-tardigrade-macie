@@ -1,15 +1,7 @@
 # Creates a Macie org administrator account in an AWS organization.  Once created, all AWS accounts added to the AWS organization will be enrolled in Macie and managed by the delegated Macie org administrator account
-# - Creates a Macie account in the org's Macie administrator account
 # - Create the organization's Macie administrator account
 #
 # Prerequisites:  The AWS org must already exist
-
-# Create Macie account for the organization's GuardDuty administrator account
-resource "aws_macie2_account" "macie_administrator" {
-  provider                     = aws.macie_administrator
-  finding_publishing_frequency = var.finding_publishing_frequency
-  status                       = var.status
-}
 
 # Create the organization's Macie administrator account
 resource "aws_macie2_organization_admin_account" "this" {

@@ -7,7 +7,7 @@ module "findings_filter" {
   finding_publishing_frequency = "FIFTEEN_MINUTES"
   status                       = "ENABLED"
 
-  findings_filter = [
+  findings_filters = [
     {
       name        = "Filter1"
       name_prefix = null
