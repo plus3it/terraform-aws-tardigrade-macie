@@ -28,8 +28,6 @@ resource "aws_macie2_member" "this" {
 # Create macie invite accepter in the member account
 resource "aws_macie2_invitation_accepter" "this" {
   administrator_account_id = aws_macie2_member.this.administrator_account_id
-
-  depends_on = [aws_macie2_member.this]
 }
 
 data "aws_caller_identity" "this" {}
