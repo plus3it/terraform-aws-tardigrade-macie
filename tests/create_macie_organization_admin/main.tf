@@ -24,20 +24,18 @@ resource "aws_macie2_account" "macie_administrator" {
   status                       = "ENABLED"
 }
 
+data "aws_caller_identity" "macie_administrator" {
+  provider = aws.macie_administrator
+}
+
 # Create a Macie org administrator account in the AWS organization
-# - Creates a Macie account in the org's Macie administrator account
-# - Create the organization's Macie administrator account
+# - Creates the organization's delegated Macie administrator account
 #
 # Prerequisites:  The AWS org must already exist
 module "macie_org_admin_account" {
   source = "../../modules/organization-admin"
 
-  admin_account_id = null
-
-  providers = {
-    aws                     = aws # Current caller identity and AWS org account
-    aws.macie_administrator = aws.macie_administrator
-  }
+  delegated_administrator_account_id = data.aws_caller_identity.macie_administrator.account_id
 
   depends_on = [aws_organizations_organization.this]
 }

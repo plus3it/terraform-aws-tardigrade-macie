@@ -22,6 +22,7 @@ resource "aws_macie2_member" "this" {
   invitation_message                    = var.member.invitation_message
   invitation_disable_email_notification = var.member.invitation_disable_email_notification
   tags                                  = var.member.tags
+  depends_on                            = [aws_macie2_account.this]
 }
 
 # Create macie invite accepter in the member account
@@ -31,6 +32,4 @@ resource "aws_macie2_invitation_accepter" "this" {
   depends_on = [aws_macie2_member.this]
 }
 
-data "aws_caller_identity" "this" {
-  provider = aws
-}
+data "aws_caller_identity" "this" {}

@@ -24,7 +24,7 @@ resource "aws_macie2_account" "administrator" {
 # - Creates a Macie member resource in the administrator AWS account which imnvites the member account to join the administrator account Macie organization.
 # - Creates a Macie invite accepter in the member account to accept the invite from the administrator account
 module "macie_member" {
-  source = "../../modules/macie-member-account"
+  source = "../../modules/member"
 
   finding_publishing_frequency = "FIFTEEN_MINUTES"
   status                       = "ENABLED"

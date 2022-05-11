@@ -20,19 +20,17 @@ Prerequisites:  The AWS org must already exist
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0 |
-| <a name="provider_aws.macie_administrator"></a> [aws.macie\_administrator](#provider\_aws.macie\_administrator) | >= 3.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_caller_identity.macie_administrator](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_admin_account_id"></a> [admin\_account\_id](#input\_admin\_account\_id) | (Required) The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization. | `string` | n/a | yes |
+| <a name="input_delegated_administrator_account_id"></a> [delegated\_administrator\_account\_id](#input\_delegated\_administrator\_account\_id) | (Required) The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the AWS organization. | `string` | n/a | yes |
 
 ## Outputs
 
