@@ -36,8 +36,6 @@ module "macie_member" {
 
   member = {
     email                                 = var.member_email
-    invite                                = true
-    status                                = "ENABLED"
     invitation_message                    = "You are invited to join Macie"
     invitation_disable_email_notification = true
     tags                                  = null

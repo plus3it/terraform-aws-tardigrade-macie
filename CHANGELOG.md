@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### 1.0.0
 
-**Released**: 2022.05.13
+**Released**: 2022.05.20
 
 **Commit Delta**: [Change from 0.0.1 release](https://github.com/plus3it/terraform-aws-tardigrade-macie-member/compare/0.0.1...1.0.0)
 
