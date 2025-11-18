@@ -2,7 +2,7 @@ module tardigarde-ci/tests
 
 go 1.24.0
 
-require github.com/gruntwork-io/terratest v0.52.0
+require github.com/gruntwork-io/terratest v0.53.0
 
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
